@@ -23,7 +23,6 @@ void main() {
     int fourthLevel = 32;
     int fifthLevel = 32;
     int sixthLevel = 18;
-    int seventhLevel = 8;
 
     if (numAtomic >= 1) {
         // 1º Nivel
@@ -35,26 +34,38 @@ void main() {
 
             if (!isStop2S) {
                 short isStop2P = (numAtomic - 4) >= 1 && (numAtomic - 4) <= 6;
-                printf(" 2p%d", isStop2P ? numAtomic - 4 : 6);
+                printf("\n2p%d", isStop2P ? numAtomic - 4 : 6);
             }
             
             if (numAtomic > secondLevel + firstLevel) {
                 // 3º Nivel : +11
                 short isStop3S = (numAtomic - 10) >= 1 && (numAtomic - 10) <= 2;
-                printf("\n3s%d", isStop3S ? numAtomic - 10 : 2);
+                printf(" 3s%d", isStop3S ? numAtomic - 10 : 2);
                 
-                if (isStop3S) {
+                if (!isStop3S) {
                     short isStop3P = (numAtomic - 12) >= 1 && (numAtomic - 12) <= 6;
-                    printf(" 3p%d", isStop3P ? numAtomic - 4 : 6);
+                    printf("\n3p%d", isStop3P ? numAtomic - 12 : 6);
+
+                    if (!isStop3P) {
+                        if(numAtomic <= 20 || numAtomic > 20) {
+                            short isStop4S = (numAtomic - 18) >= 1 && (numAtomic - 18) <= 2;
+                            printf(" 4s%d", isStop4S ? numAtomic - 18 : 2);
+                        }
+                        if (numAtomic > 20) {
+                            short isStop3D = (numAtomic - 20) >= 1 && (numAtomic - 20) <= 10;
+                            printf("\n3d%d", isStop3D ? numAtomic - 20 : 10);
+                        }
+                    }
                 }
-                printf("\n3s2 3p6 3d10");
-                if (numAtomic > thirdLevel) {
+
+                if (numAtomic > thirdLevel + fourthLevel) {
                     // 4º Nivel
-                    printf("\n4s2 4p6 4d10 4f14");
-                    if (numAtomic > fourthLevel) {
+
+                    printf(" 4p6 5s2");
+                    if (numAtomic > fourthLevel + thirdLevel) {
                         // 5º Nivel
                         printf("\n5s2 5p6 5d10 5f14");
-                        if (numAtomic > fifthLevel) {
+                        if (numAtomic > fifthLevel + fourthLevel) {
                             // 6º Nivel
                             printf("\n6s2 6p6 6d10");
                             if (numAtomic > sixthLevel) {
